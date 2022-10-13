@@ -118,8 +118,10 @@ double CurvesManager::ParallelComputeCurvesRadiiTotalSum(const CurvesLibrary::Cu
     size_t hardware_threads = std::thread::hardware_concurrency();
     size_t threads_num = hardware_threads != 0 ? hardware_threads : 2;
 
+    int grainSize = curves.size() / threads_num;
+
     Summator summator(curves);
-    auto range = tbb::blocked_range<int>(0, curves.size(), threads_num);
+    auto range = tbb::blocked_range<int>(0, curves.size(), grainSize);
     tbb::parallel_reduce(range, summator);
 
     return summator.Result();
