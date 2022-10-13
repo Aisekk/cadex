@@ -1,0 +1,17 @@
+*pro.user
+*user
+*.stash
+*.Debug
+*.Release
+*.exe
+*.obj
+*.ilk
+*.pdb
+/build-test-Desktop_x86_windows_msvc2017_pe_64bit-Debug
+/build-test-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug
+/build-test-Desktop_Qt_5_15_1_MSVC2015_64bit-Release
+/build-test-Desktop_Qt_5_15_1_MinGW_64_bit-Release
+/build-test-Desktop_Qt_5_15_1_MinGW_64_bit-Debug
+/build-test-Desktop_x86_windows_msvc2017_pe_64bit-Release
+/build_test_vs
+/build_test_vs2017
