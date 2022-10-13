@@ -4,11 +4,13 @@
 using namespace CurvesLibrary;
 
 Summator::Summator(const Curves3D& curves)
-    : _curves(curves) {}
+    : _curves(curves)
+    , _sum(0.0)
+{}
 
-Summator::Summator(const Summator& summator, tbb::split spl) :
-    _curves(summator._curves),
-    _sum(0.0)
+Summator::Summator(const Summator& summator, tbb::split spl)
+    : _curves(summator._curves)
+    , _sum(0.0)
 {}
 
 void Summator::operator()(const tbb::blocked_range<int>& range)
