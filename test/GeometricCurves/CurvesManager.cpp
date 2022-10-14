@@ -154,16 +154,16 @@ CurvesLibrary::Curve3DPtr CurvesManager::CreateRandomCurve(int seed) const
     case CurvesLibrary::Curve3D::Ellipse:
     {
         auto values = GenerateRandomValues(2);
-        double semiaxis1 = values.front();
-        double semiaxis2 = *(std::next(values.begin(), 1));
+        double semiaxis1 = values[0];
+        double semiaxis2 = values[1]; 
         curve = _api.createEllipse(semiaxis1, semiaxis2);
         break;
     }
     case CurvesLibrary::Curve3D::Helix:
     {
         auto values = GenerateRandomValues(2);
-        double radius = values.front();
-        double step = *(std::next(values.begin(), 1));
+        double radius = values[0];
+        double step = values[1];
         curve = _api.createHelix(radius, step);
         break;
     }
@@ -189,7 +189,7 @@ std::vector<double> CurvesManager::GenerateRandomValues(int paramCount) const
 
     for (int i = 0; i < paramCount; ++i)
     {
-        double seed = (double)(duration.count() + i * 100);
+        double seed = (double)(duration.count() % 100 + i * 100);
         engine.seed(seed);
         double rand = uniform(engine);
         values.push_back(rand);
