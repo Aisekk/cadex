@@ -9,7 +9,8 @@ add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
 find_package(TBB REQUIRED tbb)
 
-include_directories(../${LIBRARY_NAME})
+target_include_directories(${PROJECT_NAME} PUBLIC ../${LIBRARY_NAME})
+#include_directories(../${LIBRARY_NAME})
 
 target_link_libraries(${PROJECT_NAME} ${LIBRARY_NAME} ${TBB_IMPORTED_TARGETS})
 
